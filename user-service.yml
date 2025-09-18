@@ -1,17 +1,12 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:usersdb   # in-memory DB
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:mysql://localhost:3306/usersdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root       # 👈 replace with your MySQL username
+    password: root       # 👈 replace with your MySQL password
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: update   # options: create | create-drop | update | validate | none
     show-sql: true
-    database-platform: org.hibernate.dialect.H2Dialect
-
-# Optional: Enable H2 console
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    database-platform: org.hibernate.dialect.MySQL5Dialect
